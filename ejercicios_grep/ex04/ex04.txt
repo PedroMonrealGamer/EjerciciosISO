@@ -1,0 +1,17 @@
+Nota: usa el comando grep para buscar todos los ficheros a la vez
+Nota: opciones -L -l -h
+
+1) Muestra el nombre de los ficheros que contienen la cadena: are
+solucion: grep -l "are" *.txt
+
+2) Muestra el nombre de los ficheros que no contienen la cadena: two
+solucion:grep -l -L "two" *.txt
+
+3) Muestra todas las lineas que contienen la cadena: are
+solucion:grep "are" *.txt
+
+4) Muestra como máximo dos lineas de cualquier fichero que contengan la cadena: a
+solucion:grep -m 2 "a" *.txt
+
+5) Muestra todas las lineas que contienen la cadena sin mostrar el nombre del fichero al principio: to
+solucion:grep -h "to" *.txt
