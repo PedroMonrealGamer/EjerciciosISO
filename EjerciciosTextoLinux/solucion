@@ -1,0 +1,152 @@
+SORT(1)                                                       Órdenes de usuario                                                      SORT(1)
+
+NNOOMMBBRREE
+       sort - ordena las líneas de un archivo de texto
+
+SSIINNOOPPSSIISS
+       ssoorrtt [_O_P_C_I_Ó_N]... [_A_R_C_H_I_V_O]...
+       ssoorrtt [_O_P_C_I_Ó_N]... _-_-_f_i_l_e_s_0_-_f_r_o_m_=_F
+
+DDEESSCCRRIIPPCCIIÓÓNN
+       Muestra todos los ARCHIVO(S) ordenados y concatenados por la salida estándar.
+
+       Si no se define ningún ARCHIVO o bien se indica '-', se lee la entrada estándar.
+
+       Los argumentos obligatorios para las opciones largas también los son para las opciones cortas. Opciones de ordenado:
+
+       --bb, ----iiggnnoorree--lleeaaddiinngg--bbllaannkkss
+              ignora los espacios en blanco iniciales
+
+       --dd, ----ddiiccttiioonnaarryy--oorrddeerr
+              solo tiene en cuenta espacios en blanco y los caracteres alfanuméricos
+
+       --ff, ----iiggnnoorree--ccaassee
+              no distingue entre mayúsculas y minúsculas
+
+       --gg, ----ggeenneerraall--nnuummeerriicc--ssoorrtt
+              realiza la comparación según el valor numérico
+
+       --ii, ----iiggnnoorree--nnoonnpprriinnttiinngg
+              solo tiene en cuenta caracteres imprimibles
+
+       --MM, ----mmoonntthh--ssoorrtt
+              compara (desconocido) < 'ENE' < ... < 'DIC'
+
+       --hh, ----hhuummaann--nnuummeerriicc--ssoorrtt
+              compara números en formato humanamente legible (p.ej: 2K,1G, etc...)
+
+       --nn, ----nnuummeerriicc--ssoorrtt
+              compara según el número
+
+       --RR, ----rraannddoomm--ssoorrtt
+              mezcla las líneas, pero agrupará aquellas con un mismo patrón. Consulte shuf(1)
+
+       ----rraannddoomm--ssoouurrccee=_A_R_C_H_I_V_O
+              extrae bytes aleatoriamente de ARCHIVO
+
+       --rr, ----rreevveerrssee
+              invierte el resultado de las comparaciones
+
+       ----ssoorrtt=_P_A_L_A_B_R_A
+              ordena  según  la PALABRA: --gg por número en general, --hh genérico tal como lo haría un humano, --nn numérico, --RR aleatorio, --VV por
+              número de versión
+
+       --VV, ----vveerrssiioonn--ssoorrtt
+              ordena de modo natural los número de versión según el texto
+
+       Otras opciones:
+
+       ----bbaattcchh--ssiizzee=_N_F_U_S_I_Ó_N
+              fusiona un máximo de NFUSIÓN entradas al mismo tiempo. Si fuese un mayor número, emplearía archivos temporales
+
+       --cc, ----cchheecckk, ----cchheecckk=_d_i_a_g_n_o_s_e_-_f_i_r_s_t
+              solo comprueba si la entrada ya está ordenada. No ordena nada
+
+       --CC, ----cchheecckk=_q_u_i_e_t, ----cchheecckk=_s_i_l_e_n_t
+              igual que --cc pero no emite ningún diagnóstico
+
+       ----ccoommpprreessss--pprrooggrraamm=_P_R_O_G
+              comprime temporalmente con PROG. Para descomprimir utiliza PROG --dd
+
+       ----ddeebbuugg
+              destaca la parte de la línea empleada por sort e informa por la salida de error estándar de cualquier problema.
+
+       ----ffiilleess00--ffrroomm=_A_R_C_H_I_V_O
+              toma los datos de los archivos definidos mediante nombres terminados con el NUL en ARCHIVO. Si ARCHIVO es '-', se toman  en  la
+              entrada estándar.
+
+       --kk, ----kkeeyy=_K_E_Y_D_E_F
+              ordena según una determinada clave; KEYDEF indica el tipo y localización
+
+       --mm, ----mmeerrggee
+              fusiona archivos previamente ordenados; no ordena nada
+
+       --oo, ----oouuttppuutt=_A_R_C_H_I_V_O
+              envía el resultado a ARCHIVO en lugar de hacerlo por la salida estándar
+
+       --ss, ----ssttaabbllee
+              hace que sort sea más estable eliminando la comparación de último recurso
+
+       --SS, ----bbuuffffeerr--ssiizzee=_T_A_M_A_Ñ_O
+              utiliza TAMAÑO como buffer principal de memoria
+
+       --tt, ----ffiieelldd--sseeppaarraattoorr=_S_E_P
+              considera SEP en lugar de espacios en blanco como separador
+
+       --TT, ----tteemmppoorraarryy--ddiirreeccttoorryy=_D_I_R
+              utiliza  DIR  como  directorio temporal en lugar de $TMPDIR o _/_t_m_p. Es posible definir varios directorios a empleando múltiples
+              opciones
+
+       ----ppaarraalllleell=_N
+              define a 'N' la cantidad total de ejecuciones en paralelo de sort
+
+       --uu, ----uunniiqquuee
+              Con la opción --cc comprobará si el ordenamiento es estricto. Sin esta opción solo muestra la primera de una serie de duplicados
+
+       --zz, ----zzeerroo--tteerrmmiinnaatteedd
+              las líneas se delimitan con NUL en lugar de nueva línea
+
+       ----hheellpp muestra la ayuda y finaliza
+
+       ----vveerrssiioonn
+              muestra la versión del programa y termina
+
+       KEYDEF es F[.C][OPTS][,F[.C][OPTS]] para las posiciones inicial y final, F es un número de campo y C la posición  de  un  caracter  en
+       dicho campo. En ambos casos empiezan en 1 y, por defecto, terminan al final de la línea. Si no se indican ni la opción --tt ni la --bb, se
+       contabilizan los caracteres de un campo desde el inicio del anterior espacio  en  blanco.  OPT  consiste  en  una  o  más  letras  que
+       representan  las opciones de ordenamiento: [bdfgiMhnRrV]. Éstas anulan las opciones de ordenamiento globales para esta clave. Si no se
+       aporta ninguna clave, se empleará la totalidad de la línea como tal. Use ----ddeebbuugg para detectar error con el uso de la clave.
+
+       TAMAÑO puede ir seguido de los siguientes sufijos mltiplicadores: % 1% de memoria, b 1, K 1024 (por defecto) y así succesivamente  con
+       M, G, T, P, E, Z, Y.
+
+       ****  IMPORTANTE  ****  la  localización  definida  en  el  sistema  afecta  al  resultado  de  la ordenación. Defina LC_ALL=C para un
+       funcionamiento predeterminado de sort empleando valores de bytes nativos.
+
+AAUUTTOORR
+       Escrito por Mike Haertel y Paul Eggert.
+
+IINNFFOORRMMAARR DDEE EERRRROORREESS
+       Ayuda en línea de GNU Coreutils: <https://www.gnu.org/software/coreutils/>
+       Informe cualquier error de traducción a <https://translationproject.org/team/es.html>
+
+CCOOPPYYRRIIGGHHTT
+       Copyright © 2020 Free Software Foundation, Inc. Licencia GPLv3+: GNU GPL versión 3 o posterior <https://gnu.org/licenses/gpl.html>.
+       Esto es software libre: usted es libre de cambiarlo y redistribuirlo.  NO HAY GARANTÍA, en la medida permitida por la legislación.
+
+VVÉÉAASSEE TTAAMMBBIIÉÉNN
+       shuf(1), uniq(1)
+
+       Documentación completa <https://www.gnu.org/software/coreutils/sort>
+       también disponible localmente ejecutando: info '(coreutils) sort invocation'
+
+TTRRAADDUUCCCCIIÓÓNN
+       La traducción al español de esta página del manual fue creada por Marcos Fouces <marcos@debian.org>
+
+       Esta traducción es documentación libre; lea la GNU General Public  License  Version  3  ⟨https://www.gnu.org/licenses/gpl-3.0.html⟩  o
+       posterior con respecto a las condiciones de copyright.  No existe NINGUNA RESPONSABILIDAD.
+
+       Si   encuentra   algún   error   en   la   traducción  de  esta  página  del  manual,  envíe  un  correo  electrónico  a  debian-l10n-
+       spanish@lists.debian.org ⟨⟩.
+
+GNU coreutils 8.32                                             Octubre de 2021                                                        SORT(1)
