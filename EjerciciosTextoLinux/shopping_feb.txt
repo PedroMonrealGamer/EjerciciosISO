@@ -1,4 +1,4 @@
-apple  10
-banana 20
-soap   3
-tshirt 3
+Producto: apple , Ventanas: 10
+Producto: banana , Ventanas: 20
+Producto: soap , Ventanas: 3
+Producto: tshirt , Ventanas: 3

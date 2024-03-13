@@ -74,7 +74,7 @@ Solucion: join -o 1.1,2.2 -1 1 -2 1 shopping_jan.txt shopping_feb.txt
 
 15) Muestra todas las columnas de `varying_fields.csv` menos la segunda
 [PISTA] Utiliza el comando cut
-Solucion: cut -f 1,3- -d ',' varying_fields.csv
+Solucion: cut -f 1,3 -d ' ' varying_fields.csv
 
 
 16) Borra los tres primeros carácteres (el numero) de cada linea de `fruits.txt`
@@ -83,7 +83,7 @@ Solucion:cut -c4- fruits.txt
 
 17) Extrae la primera y tercera columna de `varying_fields.csv` y alinea el resultado usando tabulaciones
 [PISTA] Utiliza los comandos: cut, tr. El carácter '\t' representa una tabulación
-Solucion:cut -f 1,3 -d ',' varying_fields.csv | tr ',' '\t'
+Solucion:cut -f1,3 -d' ' varying_fields.csv | tr ' ' '\t'
 
 18) Junta las columnas de los ficheros `c1.txt` y `c2.txt` para que se muestren separadas por una coma
 [PISTA] Utiliza el comando paste
@@ -99,11 +99,17 @@ Solucion:cut -d' ' -f2  varying_fields.csv | tr '\n' ' '
     Ejemplo: 
     apple    10 --> Producto: apple, Ventas: 10
     banana   20 --> Producto: banana, Ventas: 10 
+Solucion:sed -E 's/([a-z]+) [ ]+ ([0-9]+)/Producto: \1 , Ventanas: \2 /' shopping_feb.txt
 
 21) Muestra todas las lineas del fichero `ip.txt` excepto las lineas 4, 5, 6 y 7
 [PISTA] Utiliza el comando head. Puedes usar ; para expresar varios comandos en una sola linea
 
+Solucion:head -n 3 ip.txt ; tail -n +8 ip.txt
+
 22) En el fichero `multi_empty_lines.txt` hay varios saltos de linea consecutivos. 
     Muestra el contenido del fichero eliminando las lineas en blanco sobrantes
     Ees decir, si hay 3 lineas en blanco seguidas, solo habrá una linea en blanco en el resultado
-Solucion:
+Solucion:uniq multi_empty_lines.txt
+
+
+
