@@ -1,0 +1,1 @@
+sed -E 's/^"name": "([a-zA-Z ]*) .*email": "(.*)"/\1 , \2' users.json
